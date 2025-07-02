@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=65.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "TypeToGraph"
+version = "0.1.0"
+description = "A python project for taking different layout and applying graph algorithms to them"
+authors = [{name = "Max Miles", email="maxsyntaxarray@gmail.com"}]
+license = { text = "MIT"}
+readme = "README.md"
+requires-python= ">=3.8"
+
+dependencies = [
+    "numpy>=1.21.0",
+    "matplotlib>=3.5.0",
+]
+
+[project.urls]
+Repository = "https://github.com/mileaage/type-to-graph"
+
+[tool.setuptools.find]
+where = "TypeToGraph"
