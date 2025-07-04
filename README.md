@@ -35,3 +35,15 @@ cd TypeToGraph
     displayer.display(my_tree, 'BinaryTree', True)
 ```
 ![Result](image.png)
+
+# Documentation
+## I haven't made any yet but here are the types implemented:
+    - Binary Tree
+    - Date based Tree
+    - More coming soon or just contribute *wink*
+
+## Layouts
+    - Spring
+    - Hierarchical
+    - Circular
+    - Force Directed
