@@ -13,10 +13,10 @@ NodeValue: TypeAlias = Union[int, float, str]
 class TreeNode:
     value: Any
 
-@dataclass()
+@dataclass(unsafe_hash=True)
 class BSTNode(TreeNode):
-    left: Optional['BSTNode'] = None
-    right: Optional['BSTNode'] = None
+    left: Optional['BSTNode'] = field(default=None, compare=False)
+    right: Optional['BSTNode'] = field(default=None, compare=False)
 
 @dataclass
 class NNode:

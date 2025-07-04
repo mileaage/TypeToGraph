@@ -17,3 +17,21 @@ You can get started by cloning the repository:
 git clone https://github.com/mileaage/TypeToGraph.git
 cd TypeToGraph
 ```
+
+# Example Usage
+
+```python
+    displayer = GraphDisplayer()
+    my_tree = tree.BinaryTree(3)
+
+    my_tree.insert(7)
+    my_tree.insert(2)
+    my_tree.insert(3)
+    my_tree.insert(12)
+    my_tree.insert(7)
+    my_tree.insert(3)
+    my_tree.insert(4)
+    
+    displayer.display(my_tree, 'BinaryTree', True)
+```
+![Result](image.png)
