@@ -17,6 +17,8 @@ class TreeAdapter(Protocol):
         """Tree -> List[DisplayNode]"""
         ...
 
+# I'll eventually implement a system that can implenmt binary -> N-tree
+# this was mainly heuristic
 
 # Probably won't be used a lot
 class BinaryTreeAdapter:
