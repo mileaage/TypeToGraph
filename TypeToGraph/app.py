@@ -14,4 +14,4 @@ if __name__ == '__main__':
     my_tree.insert(3)
     my_tree.insert(4)
     
-    displayer.display(my_tree, 'BinaryTree', True)
+    displayer.display(my_tree, 'BinaryTree', False)

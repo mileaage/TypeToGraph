@@ -7,6 +7,7 @@ from typing import Optional, Dict
 
 from .layouts import LayoutEngine, SpringLayoutEngine
 from .adapter import BinaryTreeAdapter, DateBasedTreeAdapter, TreeAdapter
+from .widgets import NodeMovement
 
 
 '''
@@ -47,6 +48,7 @@ class GraphDisplayer:
         self.ax: Optional[Axes] = None
         self._current_animation: Optional[animation.FuncAnimation] = None
 
+
     def display(self, tree, tree_type: str | None = None, animate: bool = True):
         '''Display any tree using appropriate adapter'''
 
@@ -65,10 +67,23 @@ class GraphDisplayer:
         final_positions = self.layout_engine.calculate_positions(self.current_nodes)
         self.current_positions = final_positions
 
+        
         if animate:
             self._animate_to_layout()
         else:
             self._static_display()
+        
+        self.start_node_movement()
+        
+
+    def start_node_movement(self) -> None:
+        '''Start the node movement widget for interactive node manipulation'''
+        if not self.fig or not self.current_positions:
+            raise RuntimeError("Display must be called before starting node movement")
+        
+        node_movement = NodeMovement(self.fig, list(self.current_positions.values()))
+        node_movement.start()
+
 
     def _static_display(self):
         """Display without animation"""

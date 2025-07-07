@@ -5,12 +5,13 @@ To be added:
 '''
 from matplotlib.figure import Figure
 from matplotlib.axes import Axes
-from numpy.typing import NDArray
+from time import sleep
+from typing import Tuple, Optional
 
 #TODO: Fufil this bit
 
 class NodeMovement:
-    def __init__(self, fig: Figure, positions: NDArray) -> None:
+    def __init__(self, fig: Figure, positions: list[Tuple[float, float]]) -> None:
         self.fig = fig
         self.positions = positions
         self.hold = False
@@ -31,6 +32,25 @@ class NodeMovement:
 
     def _button_press(self, event) -> None:
         self.hold = True
-        
-    def _locate_node(self, x, y) -> None:
-        pass
+        print(f"Button pressed at: ({event.xdata}, {event.ydata})")
+
+        while self.hold:
+            if event.xdata is None or event.ydata is None:
+                continue
+            
+            node = self._locate_node(event.xdata, event.ydata)
+            if node is not None:
+
+                print(f"Node found at position: {node}")
+            
+            # Redraw the figure to reflect changes
+            self.fig.canvas.draw()
+            sleep(0.1)
+
+
+    def _locate_node(self, x, y) -> Optional[Tuple[float, float]]:
+        for node in self.positions:
+            # use euclidean distance to find the closest node
+            distance = ((node[0] - x) ** 2 + (node[1] - y) ** 2) ** 0.5
+            if distance < 6:
+                return node
